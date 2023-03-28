@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 /** \file CMDPROC.h
  *	\author Fernando&Tomas 	
@@ -20,8 +19,6 @@
  * 	\bug Nao existem bugs detetados 
  *  
  */
-=======
->>>>>>> 1c902996f3a4d4cfc0a57923b9f36830f73127a2
 #ifndef __CMD_PROC_H_
 #define __CMD_PROC_H_
 
@@ -32,15 +29,24 @@
 #define SOF_SYM '#'	          /* Start of Frame Symbol */
 #define EOF_SYM '!'           /* End of Frame Symbol */
 
+#define Valid 0
+#define Err_Empty_str -1
+#define Err_Invalid_cmd -2
+#define Err_CS -3
+#define Err_str_format -4
+
+#define Valid 0
+#define Err_Buf_Full -1
+
+
 /* Function prototypes */
-<<<<<<< HEAD
 /** \brief Processa Valida e le a mensagem enviada. Esta Mensagem esta 
  * criada alojada internamente no modulo cmdproc.c
  * 
  * 	\author Fernando&Tomas
  * 	\param[in] void
  * 	\param[out] int: indica o estado do processamento da mensagem
- *   0: if a valid command was found and executed           
+ *   	 0: if a valid command was found and executed           
  *	-1: if empty string or incomplete command found             
  * 	-2: if an invalid command was found                         
  * 	-3: if a CS error is detected (command not executed)        
@@ -70,10 +76,6 @@ int newCmdChar(unsigned char newChar);
  *
  *	\date 27/03/2023
  */
-=======
-int cmdProcessor(void);
-int newCmdChar(unsigned char newChar);
->>>>>>> 1c902996f3a4d4cfc0a57923b9f36830f73127a2
 void resetCmdString(void);
 
 #endif

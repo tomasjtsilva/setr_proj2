@@ -1,0 +1,30 @@
+ 
+ - Função cmdProcessor: 
+ * alterada e melhorada de forma a retornar os valores corretos com #define que permite uma mais clara interpretação de cada erro;
+ * Erro do Check Sum foi definido;
+ * Feita uma validação do SOF e de EOF na frame;
+ * Feita uma validação de SOF e de EOF únicos na frame;
+ * Feita verificação da ordem do SOF em relação ao EOF;
+ * Verificação do CMD ('P' ou 'S');
+ 
+ 
+ - ficheiro cmdProc.c: 
+ * Alteração do tipo das variáveis cmdString uma vez que a primeira dava overflow;
+ * Limpeza ao conteudo da string quando chama a função resetCmdString;
+ 
+ 
+ TESTE:
+ - Testes feitos à função newCmdChar:
+ * Encher o Buffer e tentar inserir um valor (Erro de Buffer cheio);
+ * Efectuar o Reset ao Buffer e tentar inserir um valor (teste Valido);
+ 
+ - Testes feitos à função cmdProcessor:
+ * String vazia (Erro de String vazia);
+ * String com 4 tipos de formatos errados (Erro de formato errado);
+ * String correta com CMD 'P' (teste Valido);
+ * String correta com CMD 'S' (teste Valido);
+ * String correta com o CS incorreto (Erro de Check Sum);
+
+ Foi ainda criada uma função para facilitar o UI pedindo apenas ao utilizador o CMD e a função devolvia a frame a enviar com o SOF, EOF e CS devidamente contactenados. Efetuados teste de funcionalidade da função (teste Valido).
+ 
+  

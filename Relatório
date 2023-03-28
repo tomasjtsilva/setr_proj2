@@ -1,3 +1,13 @@
+
+SETR 22/23
+
+Assigment Nº2 - Test-Driven Development - Unity
+
+Fernando Gandarinho - 28281
+Tomás Silva - 93988
+
+28/03/2023
+__________________________________________________
  
  - Função cmdProcessor: 
  * alterada e melhorada de forma a retornar os valores corretos com #define que permite uma mais clara interpretação de cada erro;
@@ -20,6 +30,8 @@
  
  - Testes feitos à função cmdProcessor:
  * String vazia (Erro de String vazia);
+ * Iniciar a frame com dois SOF (Erro de formato errado);
+ * Troca de EOF com SOF (Erro de formato errado);
  * String com 4 tipos de formatos errados (Erro de formato errado);
  * String correta com CMD 'P' (teste Valido);
  * String correta com CMD 'S' (teste Valido);

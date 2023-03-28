@@ -91,6 +91,26 @@ void test_cmdProcessor_Returns_vall_Ok(void)
 	
 	resetCmdString();
 	newCmdChar('#');
+	newCmdChar('#');
+	newCmdChar('1');
+	newCmdChar('2');
+	newCmdChar('3');
+	newCmdChar((unsigned char)('#'+ '1' + '2' + '3'));
+	newCmdChar('!');
+	TEST_ASSERT_EQUAL_INT(Err_str_format, cmdProcessor());		/*Erro no formato da frame*/
+	
+	resetCmdString();
+	newCmdChar('!');
+	newCmdChar('P');
+	newCmdChar('1');
+	newCmdChar('2');
+	newCmdChar('3');
+	newCmdChar((unsigned char)('P'+ '1' + '2' + '3'));
+	newCmdChar('#');
+	TEST_ASSERT_EQUAL_INT(Err_str_format, cmdProcessor());		/*Erro no formato da frame*/
+	
+	resetCmdString();
+	newCmdChar('#');
 	newCmdChar('P');
 	newCmdChar('1');
 	newCmdChar('2');
@@ -116,6 +136,7 @@ void test_cmdProcessor_Returns_vall_Ok(void)
 	newCmdChar((unsigned char)('P'+ '1' + '2' + '5'));
 	newCmdChar('!');
 	TEST_ASSERT_EQUAL_INT(Err_CS, cmdProcessor());		/*Erro no checkSum-> testa um cmd correto com P*/
+	
 	
 	resetCmdString();
 	newCmdChar('#');

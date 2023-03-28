@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /** \file CMDPROC.h
  *	\author Fernando&Tomas 	
@@ -19,6 +20,8 @@
  * 	\bug Nao existem bugs detetados 
  *  
  */
+=======
+>>>>>>> 1c902996f3a4d4cfc0a57923b9f36830f73127a2
 #ifndef __CMD_PROC_H_
 #define __CMD_PROC_H_
 
@@ -30,6 +33,7 @@
 #define EOF_SYM '!'           /* End of Frame Symbol */
 
 /* Function prototypes */
+<<<<<<< HEAD
 /** \brief Processa Valida e le a mensagem enviada. Esta Mensagem esta 
  * criada alojada internamente no modulo cmdproc.c
  * 
@@ -66,6 +70,10 @@ int newCmdChar(unsigned char newChar);
  *
  *	\date 27/03/2023
  */
+=======
+int cmdProcessor(void);
+int newCmdChar(unsigned char newChar);
+>>>>>>> 1c902996f3a4d4cfc0a57923b9f36830f73127a2
 void resetCmdString(void);
 
 #endif

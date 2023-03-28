@@ -22,7 +22,11 @@ char Kp, Ti, Td;
 int setpoint, output, error; 
 
 /* Internal variables */
+<<<<<<< HEAD
 static unsigned char cmdString[MAX_CMDSTRING_SIZE]; /*ERROR deve ser UNSIGNED CHAR*/
+=======
+static char cmdString[MAX_CMDSTRING_SIZE];
+>>>>>>> 1c902996f3a4d4cfc0a57923b9f36830f73127a2
 static unsigned char cmdStringLen = 0; 
 
 /* ************************************************************ */
@@ -37,13 +41,17 @@ static unsigned char cmdStringLen = 0;
 int cmdProcessor(void)
 {
 	int i;
+<<<<<<< HEAD
 	int indx_SOF=0, numbs_EOF=0;
 	int indx_EOF=0, numbs_SOF=0;
 	unsigned char CS=0;
+=======
+>>>>>>> 1c902996f3a4d4cfc0a57923b9f36830f73127a2
 	
 	/* Detect empty cmd string */
 	if(cmdStringLen == 0)
 		return -1; 
+<<<<<<< HEAD
 		
 	/*Encontrar o indice de EOF e o SOF*/
 	for(i=0; i < cmdStringLen; i++)
@@ -120,6 +128,35 @@ int cmdProcessor(void)
 	
 	/* cmd string not null and SOF not found */
 	return -5; 							/*valor de controlo:nenhum das condiçoes de paragem foi acinoda a cima*/
+=======
+	
+	/* Find index of SOF */
+	for(i=0; i < cmdStringLen; i++) {
+		if(cmdString[i] == SOF_SYM) {
+			break;
+		}
+	}
+	
+	/* If a SOF was found look for commands */
+	if(i < cmdStringLen) {
+		if(cmdString[i+1] == 'P') { /* P command detected */
+			Kp = cmdString[i+2];
+			Ti = cmdString[i+3];
+			Td = cmdString[i+4];
+			resetCmdString();
+			return 0;
+		}
+		
+		if(cmdString[i+1] == 'S') { /* S command detected */
+			printf("Setpoint = %d, Output = %d, Error = %d", setpoint, output, error);
+			resetCmdString();
+			return 0;
+		}		
+	}
+	
+	/* cmd string not null and SOF not found */
+	return -4;
+>>>>>>> 1c902996f3a4d4cfc0a57923b9f36830f73127a2
 
 }
 
@@ -131,11 +168,18 @@ int cmdProcessor(void)
 /* ******************************** */
 int newCmdChar(unsigned char newChar)
 {
+<<<<<<< HEAD
 
 	/* If cmd string not full add char to it */
 	if (cmdStringLen < MAX_CMDSTRING_SIZE) {
 		cmdString[cmdStringLen] = newChar;
 			cmdStringLen +=1;
+=======
+	/* If cmd string not full add char to it */
+	if (cmdStringLen < MAX_CMDSTRING_SIZE) {
+		cmdString[cmdStringLen] = newChar;
+		cmdStringLen +=1;
+>>>>>>> 1c902996f3a4d4cfc0a57923b9f36830f73127a2
 		return 0;		
 	}
 	
@@ -148,6 +192,7 @@ int newCmdChar(unsigned char newChar)
 /* ************************** */
 void resetCmdString(void)
 {
+<<<<<<< HEAD
 	cmdStringLen = 0;
 	int i;
 	for(i=0; i<=MAX_CMDSTRING_SIZE; i++)
@@ -155,5 +200,8 @@ void resetCmdString(void)
 		cmdString[i]=0;		
 	}
 	
+=======
+	cmdStringLen = 0;		
+>>>>>>> 1c902996f3a4d4cfc0a57923b9f36830f73127a2
 	return;
 }
